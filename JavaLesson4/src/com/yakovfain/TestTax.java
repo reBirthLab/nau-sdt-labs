@@ -9,6 +9,8 @@ package com.yakovfain;
  *
  * @author Anastasiy
  */
-public class NewClass {
-    
+public class TestTax {
+    public static void main (String[] args){
+        
+    }
 }
