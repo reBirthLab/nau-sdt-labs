@@ -11,6 +11,7 @@ package com.yakovfain;
  */
 public class TestTax {
     public static void main (String[] args){
+        //Example #1
         double grossIncome; // local variables
         String state;
         int dependants;
@@ -23,16 +24,21 @@ public class TestTax {
         
         double yourTax = t.calcTax(); // calculating tax
         
-        Tax t2 = new Tax(65000, "TX", 4);
-        
-        double hisTax = t2.calcTax();
-        
         // Printing the result
         System.out.println("Your tax is " + yourTax);
-        System.out.println("Your tax is " + hisTax);
         
         // Convert taxes in Euros
         t.convertInEuros(yourTax);
+        
+        //Example #2
+        Tax t2 = new Tax(65000, "TX", 4);
+        
+        double hisTax = t2.calcTax();
+            
+        // Printing the result
+        System.out.println("His tax is " + hisTax);
+        
+        // Convert taxes in Euros
         t2.convertInEuros(hisTax);
         
         
