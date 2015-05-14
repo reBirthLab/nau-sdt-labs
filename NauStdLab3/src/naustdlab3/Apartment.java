@@ -53,7 +53,23 @@ public class Apartment {
     public void setFloor(int floor) {
         this.floor = floor;
     }
-
+    
+    public void setNumberOfRooms (int rooms){
+        numberOfRooms = rooms;
+    }
+    
+    public void setStreet (String street){
+        this.street = street;
+    }
+    
+    public void setTypeOfBuilding (String type){
+        typeOfBuilding = type;
+    }
+    
+    public void setExploitationTime (int years){
+        expoitationTime = years;
+    }
+             
     /**
      * @param args the command line arguments
      */
