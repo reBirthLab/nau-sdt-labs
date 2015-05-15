@@ -24,16 +24,31 @@ public class Apartment {
 
     // Class fields
     private int id;
-    private int apartmentNumber;
+    private int number;
     private double grossArea;
     private int floor;
     private int numberOfRooms;
-    private String street;
+    private String streetName;
     private String typeOfBuilding;
     private int expoitationTime;
 
-    // Constructor
+    // Constructors
     public Apartment() {
+        // TODO: Write default constructor
+    }
+
+    public Apartment(int id, int number, double grossArea,
+            int floor, int numberOfRooms, String streetName,
+            String typeOfBuilding, int expoitationTime) {
+
+        this.id = id;
+        this.number = number;
+        this.grossArea = grossArea;
+        this.floor = floor;
+        this.numberOfRooms = numberOfRooms;
+        this.streetName = streetName;
+        this.typeOfBuilding = typeOfBuilding;
+        this.expoitationTime = expoitationTime;
 
     }
 
@@ -42,8 +57,8 @@ public class Apartment {
         this.id = id;
     }
 
-    public void setApartmentNumber(int number) {
-        apartmentNumber = number;
+    public void setNumber(int number) {
+        this.number = number;
     }
 
     public void setGrossArea(double area) {
@@ -53,28 +68,62 @@ public class Apartment {
     public void setFloor(int floor) {
         this.floor = floor;
     }
-    
-    public void setNumberOfRooms (int rooms){
+
+    public void setNumberOfRooms(int rooms) {
         numberOfRooms = rooms;
     }
-    
-    public void setStreet (String street){
-        this.street = street;
-    }
-    
-    public void setTypeOfBuilding (String type){
-        typeOfBuilding = type;
-    }
-    
-    public void setExploitationTime (int years){
-        expoitationTime = years;
-    }
-             
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+
+    public void setStreet(String street) {
+        streetName = street;
     }
 
+    public void setTypeOfBuilding(String type) {
+        typeOfBuilding = type;
+    }
+
+    public void setExploitationTime(int years) {
+        expoitationTime = years;
+    }
+
+    // Method for getting class fields
+    public int getId() {
+        return id;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public double getGrossArea() {
+        return grossArea;
+    }
+
+    public int getFloor() {
+        return floor;
+    }
+
+    public int getNumberOfRooms() {
+        return numberOfRooms;
+    }
+
+    public String getStreet() {
+        return streetName;
+    }
+
+    public String getTypeOfBuilding() {
+        return typeOfBuilding;
+    }
+
+    public int getExploitationTime() {
+        return expoitationTime;
+    }
+
+    public void printData() {
+        System.out.println("Apartment ID: " + id + "\n" 
+                +"Number: " + number + ", Area: " + grossArea
+                + ", Floor: " + floor + ", Rooms: " + numberOfRooms
+                + ", Street: " + streetName + ",\n"
+                + "Type of building: " + typeOfBuilding
+                + ", Years of expluatation: " + expoitationTime + "\n");
+    }
 }
