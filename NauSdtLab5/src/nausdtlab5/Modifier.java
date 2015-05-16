@@ -36,8 +36,6 @@ public class Modifier {
         String fileName = "Apartment.java";
         String tempDir =  "./Temp/";
 
-        System.out.println(tempDir);
-
         File input = new File(tempDir, fileName);
         File output = new File(tempDir, "mod_" + fileName);
 
