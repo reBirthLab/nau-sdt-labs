@@ -34,12 +34,12 @@ public class Modifier {
         File input = new File(tempDir, fileName);
         File output = new File(tempDir, "mod_" + fileName);
 
-        RandomAccessFile reader = new RandomAccessFile(input, "r");
-        RandomAccessFile writer = new RandomAccessFile(output, "rw");
+        RandomAccessFile inputFile = new RandomAccessFile(input, "r");
+        RandomAccessFile outputFile = new RandomAccessFile(output, "rw");
 
         String currentLine;
 
-        while ((currentLine = reader.readLine()) != null) {
+        while ((currentLine = inputFile.readLine()) != null) {
 
             System.out.println(currentLine);
 
@@ -83,7 +83,7 @@ public class Modifier {
                 idx = spaceIdx + 1;
             }
 
-            writer.writeBytes(str + "\r\n");
+            outputFile.writeBytes(str + "\r\n");
         }
     }
 }
