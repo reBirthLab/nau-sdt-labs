@@ -59,7 +59,7 @@ public class Modifier {
             while ((spaceIdx = str.indexOf(" ", idx)) != -1) {
 
                 // Check if a word is longer than 2 characters and if so - 
-                // changes it to upper case
+                // change it to upper case
                 deltaIdx = (spaceIdx - lastIdx) - 1;
 
                 if (deltaIdx > 2) {
