@@ -99,20 +99,26 @@ public class FunctionBuilderGUIController implements Initializable {
 
         if (!"".equals(formulaInput1.getText())) {
             formula1 = formulaInput1.getText();
+            polyline1.setVisible(true);
         } else {
             formula1 = "0";
+            polyline1.setVisible(false);
         }
 
         if (!"".equals(formulaInput2.getText())) {
             formula2 = formulaInput2.getText();
+            polyline2.setVisible(true);
         } else {
             formula2 = "0";
+            polyline2.setVisible(false);
         }
 
         if (!"".equals(formulaInput3.getText())) {
             formula3 = formulaInput3.getText();
+            polyline3.setVisible(true);
         } else {
             formula3 = "0";
+            polyline3.setVisible(false);
         }
 
         Class func1 = dynamicFunction(formula1);
@@ -139,6 +145,10 @@ public class FunctionBuilderGUIController implements Initializable {
         formulaInput1.setText("10*exp(-x/4) * cos(3*x)");
         formulaInput2.setText("10*exp(-x/4)");
         formulaInput3.setText("-10*exp(-x/4)");
+        
+        polyline1.setVisible(true);
+        polyline2.setVisible(true);
+        polyline3.setVisible(true);
 
         Double x, y;
         Double xMin = Double.parseDouble(xMinInput.getText());
