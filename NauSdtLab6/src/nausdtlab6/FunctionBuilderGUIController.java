@@ -7,8 +7,12 @@ package nausdtlab6;
 
 import static java.lang.Math.cos;
 import static java.lang.Math.exp;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,6 +23,7 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Polyline;
+import org.mdkt.compiler.InMemoryJavaCompiler;
 
 /**
  *
@@ -29,11 +34,11 @@ public class FunctionBuilderGUIController implements Initializable {
     @FXML
     private ScrollPane pane;
     @FXML
-    private Polyline polyline0;
-    @FXML
     private Polyline polyline1;
     @FXML
     private Polyline polyline2;
+    @FXML
+    private Polyline polyline3;
     @FXML
     private Slider sliderX;
     @FXML
@@ -50,9 +55,13 @@ public class FunctionBuilderGUIController implements Initializable {
     private TextField xMaxInput;
     @FXML
     private TextField formulaInput1;
+    @FXML
+    private TextField formulaInput2;
+    @FXML
+    private TextField formulaInput3;
 
     @FXML
-    private void handleButtonAction(ActionEvent event) {
+    private void handleButtonAction(ActionEvent event) throws Exception {
         Button button = (Button) event.getSource();
         String buttonLabel = button.getText();
         switch (buttonLabel) {
@@ -63,67 +72,137 @@ public class FunctionBuilderGUIController implements Initializable {
                 clearGraphs();
                 break;
             case "Default":
+                drawDefaultGraphs();
                 break;
         }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        drawGraphs();
+        try {
+            drawGraphs();
+        } catch (Exception ex) {
+            Logger.getLogger(FunctionBuilderGUIController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
-    private void drawGraphs() {
+    private Class<?> dynamicFunction(String formula) throws Exception {
+
+        String sourceCode = "package nausdtlab6.runtime;"
+                + "import static java.lang.Math.*;"
+                + "public class Function {"
+                + "public double func(java.lang.Double x){"
+                + "return " + formula + ";"
+                + "}"
+                + "}";
+
+        return InMemoryJavaCompiler.compile("nausdtlab6.runtime.Function", sourceCode);
+    }
+
+    private double function(double x, Class<?> functionClass) throws InstantiationException,
+            IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException {
+        Object newFunction = functionClass.newInstance();
+        Method method = functionClass.getDeclaredMethod("func", Double.class);
+        return (double) method.invoke(newFunction, x);
+    }
+
+    private void drawGraphs() throws Exception {
         clearGraphs();
 
         Double x, y;
         Double xMin = Double.parseDouble(xMinInput.getText());
         Double xMax = Double.parseDouble(xMaxInput.getText());
 
-//        int scaleX = (int) (pane.getPrefWidth() / xMax);
-//        int scaleY = (int) (pane.getPrefHeight() / 20);
-//        
-//        for (x = xMin; x < xMax; x += 0.05) {
-//            
-//            y = 10 * exp(-x / 4) * cos(3 * x);
-//            polyline0.getPoints().addAll(x * scaleX, -y * scaleY);
-//            
-//            y = 10 * exp(-x / 4);
-//            polyline1.getPoints().addAll(x * scaleX, -y * scaleY);
-//            
-//            y = -10 * exp(-x / 4);
-//            polyline2.getPoints().addAll(x * scaleX, -y * scaleY);
-//        }
         int scaleX = (int) sliderX.getValue();
         int scaleY = (int) sliderY.getValue();
 
-        // Interpeter bsh = new Interpreter();
-        // double dd = bsh.eval(formulaInput1.getText());
+        String formula1, formula2, formula3;
+        
+        if (!"".equals(formulaInput1.getText())) {
+        formula1 = formulaInput1.getText();
+        } else {
+        formula1 = "0";
+        }
+        
+        if (!"".equals(formulaInput2.getText())) {
+        formula2 = formulaInput2.getText();
+        } else {
+        formula2 = "0";
+        }
+        
+        if (!"".equals(formulaInput3.getText())) {
+        formula3 = formulaInput3.getText();
+        } else {
+        formula3 = "0";
+        }
+        
+        Class func1 = dynamicFunction(formula1);
+        Class func2 = dynamicFunction(formula2);
+        Class func3 = dynamicFunction(formula3);
+
+        for (x = xMin; x < xMax; x += 0.05) {
+
+            y = function(x, func1);
+            polyline1.getPoints().addAll(x * scaleX, -y * scaleY);
+
+            y = function(x, func2);
+            polyline2.getPoints().addAll(x * scaleX, -y * scaleY);
+
+            y = function(x, func3);
+            polyline3.getPoints().addAll(x * scaleX, -y * scaleY);
+        }
+    }
+
+    private void drawDefaultGraphs() {
+        //FIRST SIMPLE VERSION
+        clearGraphs();
+
+        Double x, y;
+        Double xMin = Double.parseDouble(xMinInput.getText());
+        Double xMax = Double.parseDouble(xMaxInput.getText());
+
+        int scaleX = (int) (pane.getPrefWidth() / xMax);
+        int scaleY = (int) (pane.getPrefHeight() / 20);
+
         for (x = xMin; x < xMax; x += 0.05) {
 
             y = 10 * exp(-x / 4) * cos(3 * x);
-            polyline0.getPoints().addAll(x * scaleX, -y * scaleY);
-
-            y = 10 * exp(-x / 4);
             polyline1.getPoints().addAll(x * scaleX, -y * scaleY);
 
-            y = -10 * exp(-x / 4);
+            y = 10 * exp(-x / 4);
             polyline2.getPoints().addAll(x * scaleX, -y * scaleY);
+
+            y = -10 * exp(-x / 4);
+            polyline3.getPoints().addAll(x * scaleX, -y * scaleY);
         }
     }
 
     private void clearGraphs() {
-        polyline0.getPoints().clear();
         polyline1.getPoints().clear();
         polyline2.getPoints().clear();
+        polyline3.getPoints().clear();
     }
 
     @FXML
-    private void handleSliderAction(MouseEvent event) {
+    private void handleSliderAction(MouseEvent event) throws Exception {
         drawGraphs();
     }
 
     @FXML
-    private void handleMenuActions(ActionEvent event) {
+    private void handleMenuActions(ActionEvent event) throws Exception {
+        MenuItem mItem = (MenuItem) event.getSource();
+        String action = mItem.getText();
+        switch (action) {
+            case "Build":
+                drawGraphs();
+                break;
+            case "Reset":
+                clearGraphs();
+                break;
+            case "Default":
+                drawDefaultGraphs();
+                break;
+        }
     }
 
 }

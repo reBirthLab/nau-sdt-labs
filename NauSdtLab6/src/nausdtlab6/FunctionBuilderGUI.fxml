@@ -52,10 +52,10 @@
                         <Line endX="800.0" endY="550.0" startY="550.0" strokeWidth="0.5" style="-fx-stroke-dash-array: 3px;" />
                      </children>
                   </Group>
-                  <Polyline fx:id="polyline0" layoutX="50.0" layoutY="300.0" stroke="RED" strokeType="INSIDE" strokeWidth="0.5">              
+                  <Polyline fx:id="polyline1" layoutX="50.0" layoutY="300.0" stroke="RED" strokeType="INSIDE" strokeWidth="0.7">              
             </Polyline>
-                  <Polyline fx:id="polyline1" layoutX="50.0" layoutY="300.0" stroke="RED" strokeType="INSIDE" strokeWidth="0.5" />
-                  <Polyline fx:id="polyline2" layoutX="50.0" layoutY="300.0" stroke="RED" strokeType="INSIDE" strokeWidth="0.5">
+                  <Polyline fx:id="polyline2" layoutX="50.0" layoutY="300.0" stroke="BLUE" strokeType="INSIDE" strokeWidth="0.7" />
+                  <Polyline fx:id="polyline3" layoutX="50.0" layoutY="300.0" stroke="GREEN" strokeType="INSIDE" strokeWidth="0.7">
             </Polyline>
                </children>
             </Pane>
@@ -138,8 +138,8 @@
             <TextField alignment="CENTER_RIGHT" layoutX="75.0" layoutY="41.0" prefHeight="25.0" prefWidth="60.0" text="0" fx:id="xMinInput" />
             <TextField alignment="CENTER_RIGHT" layoutX="75.0" layoutY="78.0" prefHeight="25.0" prefWidth="60.0" text="10" fx:id="xMaxInput" />
             <TextField fx:id="formulaInput1" layoutX="20.0" layoutY="200.0" prefWidth="140.0" text="10*exp(-x/4) * cos(3*x)" />
-            <TextField layoutX="20.0" layoutY="260.0" prefWidth="140.0" text="10*exp(-x/4)" />
-            <TextField layoutX="20.0" layoutY="320.0" prefWidth="140.0" text="-10*exp(-x/4)" />
+            <TextField fx:id="formulaInput2" layoutX="20.0" layoutY="260.0" prefWidth="140.0" text="10*exp(-x/4)" />
+            <TextField fx:id="formulaInput3" layoutX="20.0" layoutY="320.0" prefWidth="140.0" text="-10*exp(-x/4)" />
             <Label layoutX="20.0" layoutY="15.0" text="Limits">
                <font>
                   <Font name="System Bold" size="14.0" />
@@ -150,9 +150,9 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="20.0" layoutY="180.0" text="Formula 1" />
-            <Label layoutX="20.0" layoutY="240.0" text="Formula 2" />
-            <Label layoutX="20.0" layoutY="300.0" text="Formula 3" />
+            <Label layoutX="20.0" layoutY="180.0" text="Function 1" />
+            <Label layoutX="20.0" layoutY="240.0" text="Function 2" />
+            <Label layoutX="20.0" layoutY="300.0" text="Function 3" />
             <Button layoutX="20.0" layoutY="380.0" mnemonicParsing="false" onAction="#handleButtonAction" prefWidth="70.0" text="Build">
                <font>
                   <Font name="System Bold" size="12.0" />
@@ -160,6 +160,9 @@
             </Button>
             <Button layoutX="105.0" layoutY="380.0" mnemonicParsing="false" onAction="#handleButtonAction" prefWidth="55.0" text="Reset" />
             <Button layoutX="105.0" layoutY="415.0" mnemonicParsing="false" onAction="#handleButtonAction" prefWidth="55.0" text="Default" />
+            <Line endX="50.0" layoutX="90.0" layoutY="190.0" stroke="RED" strokeWidth="2.0" />
+            <Line endX="50.0" layoutX="90.0" layoutY="250.0" stroke="BLUE" strokeWidth="2.0" />
+            <Line endX="50.0" layoutX="90.0" layoutY="310.0" stroke="GREEN" strokeWidth="2.0" />
          </children>
       </Pane>
    </left>
