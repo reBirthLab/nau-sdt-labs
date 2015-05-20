@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
@@ -23,6 +24,7 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Polyline;
+import javafx.stage.StageStyle;
 import org.mdkt.compiler.InMemoryJavaCompiler;
 
 /**
@@ -44,12 +46,6 @@ public class FunctionBuilderGUIController implements Initializable {
     @FXML
     private Slider sliderY;
     @FXML
-    private MenuItem menuBuild;
-    @FXML
-    private MenuItem menuReset;
-    @FXML
-    private MenuItem menuDefault;
-    @FXML
     private TextField xMinInput;
     @FXML
     private TextField xMaxInput;
@@ -59,23 +55,6 @@ public class FunctionBuilderGUIController implements Initializable {
     private TextField formulaInput2;
     @FXML
     private TextField formulaInput3;
-
-    @FXML
-    private void handleButtonAction(ActionEvent event) throws Exception {
-        Button button = (Button) event.getSource();
-        String buttonLabel = button.getText();
-        switch (buttonLabel) {
-            case "Build":
-                drawGraphs();
-                break;
-            case "Reset":
-                clearGraphs();
-                break;
-            case "Default":
-                drawDefaultGraphs();
-                break;
-        }
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -117,25 +96,25 @@ public class FunctionBuilderGUIController implements Initializable {
         int scaleY = (int) sliderY.getValue();
 
         String formula1, formula2, formula3;
-        
+
         if (!"".equals(formulaInput1.getText())) {
-        formula1 = formulaInput1.getText();
+            formula1 = formulaInput1.getText();
         } else {
-        formula1 = "0";
+            formula1 = "0";
         }
-        
+
         if (!"".equals(formulaInput2.getText())) {
-        formula2 = formulaInput2.getText();
+            formula2 = formulaInput2.getText();
         } else {
-        formula2 = "0";
+            formula2 = "0";
         }
-        
+
         if (!"".equals(formulaInput3.getText())) {
-        formula3 = formulaInput3.getText();
+            formula3 = formulaInput3.getText();
         } else {
-        formula3 = "0";
+            formula3 = "0";
         }
-        
+
         Class func1 = dynamicFunction(formula1);
         Class func2 = dynamicFunction(formula2);
         Class func3 = dynamicFunction(formula3);
@@ -156,6 +135,10 @@ public class FunctionBuilderGUIController implements Initializable {
     private void drawDefaultGraphs() {
         //FIRST SIMPLE VERSION
         clearGraphs();
+
+        formulaInput1.setText("10*exp(-x/4) * cos(3*x)");
+        formulaInput2.setText("10*exp(-x/4)");
+        formulaInput3.setText("-10*exp(-x/4)");
 
         Double x, y;
         Double xMin = Double.parseDouble(xMinInput.getText());
@@ -183,6 +166,44 @@ public class FunctionBuilderGUIController implements Initializable {
         polyline3.getPoints().clear();
     }
 
+    private void resetInputFields() {
+        formulaInput1.setText("");
+        formulaInput2.setText("");
+        formulaInput3.setText("");
+    }
+
+    private void showAbout() {
+        Alert aboutPopup = new Alert(Alert.AlertType.INFORMATION);
+        aboutPopup.setTitle("About");
+        aboutPopup.setHeaderText(null);
+        aboutPopup.initStyle(StageStyle.UTILITY);
+        aboutPopup.setContentText("MATH GRAPHS BUILDER 1.0\n"
+                + "by Anastasiy Tostik\n\n"
+                + "This is a simple app written in Java that can visualise three "
+                + "mathematical functions at the same time.\n\n"
+                + "Have FUN!");
+
+        aboutPopup.showAndWait();
+    }
+
+    @FXML
+    private void handleButtonAction(ActionEvent event) throws Exception {
+        Button button = (Button) event.getSource();
+        String buttonLabel = button.getText();
+        switch (buttonLabel) {
+            case "Build":
+                drawGraphs();
+                break;
+            case "Reset":
+                resetInputFields();
+                clearGraphs();
+                break;
+            case "Default":
+                drawDefaultGraphs();
+                break;
+        }
+    }
+
     @FXML
     private void handleSliderAction(MouseEvent event) throws Exception {
         drawGraphs();
@@ -197,10 +218,14 @@ public class FunctionBuilderGUIController implements Initializable {
                 drawGraphs();
                 break;
             case "Reset":
+                resetInputFields();
                 clearGraphs();
                 break;
             case "Default":
                 drawDefaultGraphs();
+                break;
+            case "About":
+                showAbout();
                 break;
         }
     }
