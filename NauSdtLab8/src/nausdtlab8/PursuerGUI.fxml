@@ -1,14 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.shape.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nausdtlab8.PursuerGUIController">
-    <children>
-        <Button layoutX="126" layoutY="90" text="Click Me!" onAction="#handleButtonAction" fx:id="button" />
-        <Label layoutX="126" layoutY="120" minHeight="16" minWidth="69" fx:id="label" />
-    </children>
-</AnchorPane>
+<BorderPane xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nausdtlab8.PursuerGUIController">
+   <center>
+      <Pane fx:id="pane" onMouseClicked="#handleMouseClickedAction" prefHeight="600.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+         <children>
+            <Rectangle height="600.0" strokeType="INSIDE" width="800.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0" startX="0.9523809523809523">
+                     <stops>
+                        <Stop color="#545454" />
+                        <Stop color="#909090" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <Ellipse fx:id="ellipse" centerX="400.0" centerY="300.0" fill="DODGERBLUE" radiusX="50.0" radiusY="30.0" strokeType="INSIDE">
+               <effect>
+                  <DropShadow color="#00000065" offsetX="5.0" offsetY="5.0" />
+               </effect></Ellipse>
+         </children>
+      </Pane>
+   </center>
+</BorderPane>
