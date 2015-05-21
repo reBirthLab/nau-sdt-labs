@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package nausdtlab8;
+package nausdtlab8.gui;
 
+import nausdtlab8.engine.EllipseEngine;
+import nausdtlab8.engine.Point;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;

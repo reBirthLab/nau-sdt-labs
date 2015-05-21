@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package nausdtlab8;
+package nausdtlab8.engine;
 
 /**
  *
@@ -11,11 +11,9 @@ package nausdtlab8;
  */
 public class Point {
 
-    double x, y;
+    //TODO Make private!!!
+    public double x, y;
 
-    public Point(){
-        
-    }
     public Point(double x, double y) {
         this.x = x;
         this.y = y;

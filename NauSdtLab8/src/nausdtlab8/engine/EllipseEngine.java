@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package nausdtlab8;
+package nausdtlab8.engine;
 
 import static java.lang.Math.abs;
 import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
+import nausdtlab8.gui.PursuerGUIController;
 
 /**
  *
