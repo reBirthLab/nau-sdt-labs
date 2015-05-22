@@ -44,6 +44,7 @@ public class PursuerGUIController implements Initializable {
     private final DecimalFormat decimal = new DecimalFormat("#.0", symbols);
     private Thread engine;
     private EllipseEngine moveEllipse;
+    private int clickCounter = 0;
     private boolean threadRunning = false;
 
     @FXML
@@ -93,11 +94,14 @@ public class PursuerGUIController implements Initializable {
 
     @FXML
     private void handleMouseClickedAction(MouseEvent event) {
+        clickCounter++;
         setClickedPoint(event.getX(), event.getY());
         setPointLabelText(clicked);
 
-        ellipse.setFill(Color.rgb(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)));
-
+        if (clickCounter >= 2) {
+            ellipse.setFill(Color.rgb(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)));
+            clickCounter = 0;
+        }
         if (!threadRunning) {
             //Start thread
             moveEllipse = new EllipseEngine(this);
