@@ -1,7 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/* 
+ * Copyright (C) 2015 Anastasiy Tovstik <anastasiy.tovstik@gmail.com>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package nausdtlab8.engine;
 
@@ -20,7 +31,7 @@ public class EllipseEngine extends Task<Void> {
 
     private final PursuerGUIController gui;
     private Point currentClicked;
-    private Point currentEllipsePosition;
+    private Point ellipsePosition;
     private double deltaX;
     private double deltaY;
     private double incX;
@@ -42,11 +53,11 @@ public class EllipseEngine extends Task<Void> {
     @Override
     protected Void call() throws Exception {
         currentClicked = gui.getClickedPoint();
-        currentEllipsePosition = gui.getEllipsePosition();
+        ellipsePosition = gui.getEllipsePosition();
 
         while (running) {
-            deltaX = currentEllipsePosition.x - currentClicked.x;
-            deltaY = currentEllipsePosition.y - currentClicked.y;
+            deltaX = ellipsePosition.getX() - currentClicked.getX();
+            deltaY = ellipsePosition.getY() - currentClicked.getY();
             incX = xIncrement()*0.5;
             incY = yIncrement()*0.5;
 
@@ -56,26 +67,24 @@ public class EllipseEngine extends Task<Void> {
                     if ((int) deltaX != 0 || (int) deltaY != 0) {
                         if (deltaX > 0) {
                             if (deltaY > 0) {
-                                currentEllipsePosition.x -= incX;
-                                currentEllipsePosition.y -= incY;
-                                gui.setEllipsePosition(currentEllipsePosition);
+                                ellipsePosition.setX(ellipsePosition.getX() - incX);
+                                ellipsePosition.setY(ellipsePosition.getY() - incY);                               
                             } else if (deltaY < 0) {
-                                currentEllipsePosition.x -= incX;
-                                currentEllipsePosition.y += incY;
-                                gui.setEllipsePosition(currentEllipsePosition);
+                                ellipsePosition.setX(ellipsePosition.getX() - incX);
+                                ellipsePosition.setY(ellipsePosition.getY() + incY);                               
                             }
                         } else if (deltaX < 0) {
                             if (deltaY > 0) {
-                                currentEllipsePosition.x += incX;
-                                currentEllipsePosition.y -= incY;
-                                gui.setEllipsePosition(currentEllipsePosition);
+                                ellipsePosition.setX(ellipsePosition.getX() + incX);
+                                ellipsePosition.setY(ellipsePosition.getY() - incY);                               
                             } else if (deltaY < 0) {
-                                currentEllipsePosition.x += incX;
-                                currentEllipsePosition.y += incY;
-                                gui.setEllipsePosition(currentEllipsePosition);
+                                ellipsePosition.setX(ellipsePosition.getX() + incX);
+                                ellipsePosition.setY(ellipsePosition.getY() + incY);                                
                             }
                         }
-                    } else {
+                        gui.setEllipsePosition(ellipsePosition);
+                        gui.setEllipseLabelText(ellipsePosition);
+                    } else {                      
                         running = false;
                     }
                 }

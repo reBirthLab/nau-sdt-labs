@@ -1,4 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2015 Anastasiy Tovstik <anastasiy.tovstik@gmail.com>
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
 
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.effect.*?>
@@ -11,11 +27,11 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nausdtlab8.gui.PursuerGUIController">
    <center>
-      <Pane fx:id="pane" onMouseClicked="#handleMouseClickedAction" prefHeight="600.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+      <Pane onMouseClicked="#handleMouseClickedAction" prefHeight="600.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <children>
             <Rectangle height="600.0" strokeType="INSIDE" width="800.0">
                <fill>
-                  <LinearGradient endX="1.0" endY="1.0" startX="0.9523809523809523">
+                  <LinearGradient endX="1.0" endY="1.0" startX="1.0">
                      <stops>
                         <Stop color="#545454" />
                         <Stop color="#909090" offset="1.0" />
@@ -27,6 +43,14 @@
                <effect>
                   <DropShadow color="#00000065" offsetX="5.0" offsetY="5.0" />
                </effect></Ellipse>
+            <Group fx:id="point">
+               <children>
+                  <Line endX="10.0" startX="-10.0" stroke="WHITE" style="-fx-stroke-dash-array: 4;" />
+                  <Line endY="10.0" startY="-10.0" stroke="WHITE" style="-fx-stroke-dash-array: 4;" />
+               </children>
+            </Group>
+            <Label fx:id="pointCoorinates" layoutX="450.0" layoutY="570.0" text="Clicked Point X: 0.0  Y: 0.0" textFill="WHITE" />
+            <Label fx:id="ellipseCoordinates" layoutX="640.0" layoutY="570.0" text="Ellipse X: 400.0  Y: 300.0" textFill="WHITE" />
          </children>
       </Pane>
    </center>
