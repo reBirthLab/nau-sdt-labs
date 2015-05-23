@@ -20,6 +20,26 @@ package nausdtlab4;
  *
  * @author Anastasiy Tovstik <anastasiy.tovstik@gmail.com>
  */
-public class Employee {
+public class Airport {
+    private final String name;
+    private final int distance;
+    private boolean isOpen;
+
+    public Airport(String name, int distance) {
+        this.name = name;
+        this.distance = distance;
+        isOpen = true;
+    }
     
+    public void changeStatus(boolean status){
+        isOpen = status;
+    }
+    
+    public String getName(){
+        return name;
+    }
+    
+    public int getDistance(){
+        return distance;
+    }
 }

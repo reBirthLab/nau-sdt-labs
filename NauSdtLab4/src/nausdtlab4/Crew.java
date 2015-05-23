@@ -20,6 +20,16 @@ package nausdtlab4;
  *
  * @author Anastasiy Tovstik <anastasiy.tovstik@gmail.com>
  */
-public class Crew {
+public class Crew{
+
+    private String name;
     
+    public Crew(String name) {
+        this.name = name;       
+        System.out.println(name + " has been successfully formed!\n");
+    }
+    
+    public String getName(){
+        return name;
+    }   
 }

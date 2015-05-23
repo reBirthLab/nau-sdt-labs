@@ -21,5 +21,58 @@ package nausdtlab4;
  * @author Anastasiy Tovstik <anastasiy.tovstik@gmail.com>
  */
 public class Flight {
+    private final String name;
+    private final int capacity;
+    private Airport destination;
+    private Plane plane;
+    private Crew crew;
+    private boolean isActive;
     
+    
+
+    public Flight(String name, Airport destination, int capacity) {
+        this.name = name;
+        this.destination = destination;
+        this.capacity = capacity;
+        isActive = true;
+        System.out.println("Flight " + name + " to " + destination.getName()
+                + " for " + capacity + " persons has been successfully created!\n");
+    }
+    
+    public void setCrew(Crew crew){
+        this.crew = crew;
+    }
+    
+    public void setPlane(Plane plane){
+        this.plane = plane;
+    }
+    
+    public void changeDestination (Airport newDestination){
+        destination = newDestination;
+        System.out.println("Flight " + name + " changes destination to " 
+                + newDestination.getName() + " due to technical problems.\n");
+    }
+    
+    public void cancelFlight(){
+        isActive = false;
+        System.out.println("Flight " + name + " is cancelled due to weather conditions.\n" );
+    }
+    
+    public String getName(){
+        return name;
+    }
+    
+    public int getCapacity(){
+        return capacity;
+    }
+    
+    public Airport getDestination(){
+        return destination;
+    }
+    
+    public Plane getPlane(){
+        return plane;
+    }
 }
+    
+    

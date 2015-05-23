@@ -21,5 +21,36 @@ package nausdtlab4;
  * @author Anastasiy Tovstik <anastasiy.tovstik@gmail.com>
  */
 public class Plane {
+    private final String name;
+    private final int capacity;
+    private final int flyingRange;
+    private boolean isBusy;
+
+    public Plane(String name, int capacity, int flyingRange) {
+        this.name = name;
+        this.capacity = capacity;
+        this.flyingRange = flyingRange;
+        
+        isBusy = false;
+    }
     
+    public String getName(){
+        return name;
+    }
+    
+    public int getCapacity(){
+        return capacity;
+    }
+    
+    public int getRange(){
+        return flyingRange;
+    }
+    
+    public boolean isBusy(){
+        return isBusy;
+    }
+    
+    public void setBusy(){
+        isBusy = true;
+    }
 }

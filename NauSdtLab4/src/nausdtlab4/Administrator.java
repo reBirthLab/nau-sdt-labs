@@ -21,5 +21,37 @@ package nausdtlab4;
  * @author Anastasiy Tovstik <anastasiy.tovstik@gmail.com>
  */
 public class Administrator {
+
+    public void formCrew(Flight flight, String name) {
+        Crew crew = new Crew(name);
+        flight.setCrew(crew);
+        System.out.println(crew.getName() + " has been successfully set to flight "
+                + flight.getName() + "!\n");
+    }
+
+    public void setPlaneForFlight(Flight flight, Plane plane) {
+        Airport destination = flight.getDestination();
+        int flightDistance = destination.getDistance();
+        int flightCapacity = flight.getCapacity();
+
+        int planeCapacity = plane.getCapacity();
+        int planeRange = plane.getRange();
+
+        if (flightDistance < planeRange 
+                && flightCapacity < planeCapacity
+                && !plane.isBusy()) {
+            flight.setPlane(plane);
+            plane.setBusy();
+            
+            System.out.println(plane.getName()
+                    + " has been successfully set to flight " + flight.getName() + "!\n");
+        } else {
+            System.out.println(plane.getName()
+                    + " cannot be set for flight " + flight.getName() + ".\n");
+        }
+    }
     
+    public void cancelFlight(Flight flight){
+        flight.cancelFlight();
+    }
 }
