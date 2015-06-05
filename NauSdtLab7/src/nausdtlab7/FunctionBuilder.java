@@ -36,7 +36,7 @@ public class FunctionBuilder extends Application {
         Scene scene = new Scene(root);
         
         stage.setTitle("Math Graphs Builder 1.0");
-        stage.getIcons().addAll(new Image(getClass().getResourceAsStream("128x128.png")));
+        stage.getIcons().addAll(new Image(getClass().getResourceAsStream("/icons/128x128.png")));
         stage.setScene(scene);
         stage.setResizable(false);
         stage.sizeToScene();
