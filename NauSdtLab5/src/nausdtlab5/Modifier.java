@@ -46,7 +46,7 @@ public class Modifier {
 
         while ((currentLine = inputFile.readLine()) != null) {
 
-            System.out.println(currentLine);
+            //System.out.println(currentLine);
 
             StringBuffer str = new StringBuffer(currentLine);
 
@@ -87,7 +87,9 @@ public class Modifier {
                 lastIdx = spaceIdx;
                 idx = spaceIdx + 1;
             }
-
+            
+            System.out.println(str);
+            
             outputFile.writeBytes(str + "\r\n");
         }
     }
