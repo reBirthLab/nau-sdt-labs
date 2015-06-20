@@ -39,15 +39,15 @@ public class AeroflotSystem {
         Plane plane3 = new Plane("P003-A318", 132, 6019);
         
         //Create administrator
-        Administrator admin = new Administrator();
+        Administrator admin = new Administrator("Admin");
 
         //Create new flights to New York and London
         Flight flightToNY = new Flight("NY7500", JFK, 160);
         Flight flightToLondon = new Flight("LHR757", LHR, 180);
 
         //Administrator forms a new crew to the flights
-        admin.formCrew(flightToNY, "Crew N101");
-        admin.formCrew(flightToLondon, "Crew L102");
+        admin.formCrew(flightToNY, "Crew N10");
+        admin.formCrew(flightToLondon, "Crew L10");
 
         //Set suitable plane to the NY flight (first attempt)
         admin.setPlaneForFlight(flightToNY, plane1);

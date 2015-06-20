@@ -1,5 +1,5 @@
-/* 
- * Copyright (C) 2015 Anastasiy Tovstik <anastasiy.tovstik@gmail.com>
+/*
+ * Copyright (C) 2015 Anastasiy
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,22 +18,12 @@ package nausdtlab4;
 
 /**
  *
- * @author Anastasiy Tovstik <anastasiy.tovstik@gmail.com>
+ * @author Anastasiy
  */
-public class Crew extends Human{
-
-    // private String name;
-    private static int count = 0;
-    private String crewName;
+public class Human {
+    String name;
     
-    public Crew(String name) {
-        super(name);
-        count +=1;
-        crewName = name + count;
-        System.out.println(crewName + " has been successfully formed!\n");
+    public Human(String name){
+        this.name = name;
     }
-    
-    public String getName(){
-        return crewName;
-    }   
 }

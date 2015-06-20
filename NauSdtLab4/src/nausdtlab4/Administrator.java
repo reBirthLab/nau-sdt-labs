@@ -20,7 +20,11 @@ package nausdtlab4;
  *
  * @author Anastasiy Tovstik <anastasiy.tovstik@gmail.com>
  */
-public class Administrator {
+public class Administrator extends Human {
+
+    public Administrator(String name) {
+        super(name);
+    }
 
     public void formCrew(Flight flight, String name) {
         Crew crew = new Crew(name);
