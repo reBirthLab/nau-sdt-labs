@@ -2,8 +2,8 @@
 <launch4jConfig>
   <dontWrapJar>false</dontWrapJar>
   <headerType>gui</headerType>
-  <jar>D:\Projects\NetBeansProjects\NauSdtLabs\NauSdtLab7\dist\NauSdtLab7.jar</jar>
-  <outfile>D:\Projects\NetBeansProjects\NauSdtLabs\NauSdtLab7\exe\math_graphs_builder_1.0.exe</outfile>
+  <jar>D:\Projects\[Programming]\NetBeansProjects\NauSdtLabs\NauSdtLab7\dist\NauSdtLab7.jar</jar>
+  <outfile>D:\Projects\[Programming]\NetBeansProjects\NauSdtLabs\NauSdtLab7\exe\Math Graphs Builder 1.0\math_graphs_builder_1.0.exe</outfile>
   <errTitle></errTitle>
   <cmdLine></cmdLine>
   <chdir>.</chdir>
@@ -13,7 +13,7 @@
   <stayAlive>false</stayAlive>
   <restartOnCrash>false</restartOnCrash>
   <manifest></manifest>
-  <icon>D:\Projects\NetBeansProjects\NauSdtLabs\NauSdtLab7\exe\Functions.ico</icon>
+  <icon>D:\Projects\[Programming]\NetBeansProjects\NauSdtLabs\NauSdtLab7\exe\Functions.ico</icon>
   <classPath>
     <mainClass>nausdtlab7.FunctionBuilder</mainClass>
     <cp>lib/JavaInMemoryCompiler.jar</cp>
@@ -24,7 +24,7 @@
     <bundledJre64Bit>false</bundledJre64Bit>
     <bundledJreAsFallback>false</bundledJreAsFallback>
     <minVersion>1.8.0</minVersion>
-    <maxVersion>1.8.0_45</maxVersion>
+    <maxVersion></maxVersion>
     <jdkPreference>preferJre</jdkPreference>
     <runtimeBits>64/32</runtimeBits>
   </jre>
